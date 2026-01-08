@@ -19,6 +19,7 @@ exports.createTask = async (req, res) => {
 
         res.status(201).json(task);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -29,6 +30,7 @@ exports.getTasks = async (req, res) => {
         const tasks = await Task.find().sort({ createdAt: -1 });
         res.status(200).json(tasks);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -48,6 +50,7 @@ exports.updateTask = async (req, res) => {
 
         res.status(200).json(task);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -62,7 +65,9 @@ exports.deleteTask = async (req, res) => {
         }
 
         res.status(200).json({ message: "Task deleted successfully" });
+
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 };
